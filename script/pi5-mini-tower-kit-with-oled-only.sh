@@ -23,7 +23,8 @@ sudo mkdir -p /usr/local/minitower/
 sudo rsync -avP /tmp/luma.examples/examples/ /usr/local/minitower/
 sudo chmod -R 755 /usr/local/minitower/
 #sudo cp /usr/local/minitower/sys_info.py /usr/local/minitower/service.py
-sudo sh -c "sudo cat <<EOF >  '/usr/local/minitower/service.py'
+#sudo cat <<EOF >  '/usr/local/minitower/service.py'
+sudo tee '/usr/local/minitower/service.py' <<EOF >/dev/null
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Copyright (c) 2014-2022 Richard Hull and contributors
@@ -185,7 +186,7 @@ if __name__ == "__main__":
         shutdown_display()
     finally:
         print("Service stopped")
-EOF"
+EOF
 
 sudo sh -c "sudo cat <<EOF >  '/etc/systemd/system/minitower_oled.service'
 [Unit]
